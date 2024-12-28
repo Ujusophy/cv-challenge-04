@@ -25,12 +25,12 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ujusophy/adservice:${{ github.sha }} ./src/checkoutservice
+        docker build -t ujusophy/checkoutservice:${{ github.sha }} ./src/checkoutservice
 
     - name: Scan Docker Image for Vulnerabilities
       uses: aquasecurity/trivy-action@0.28.0
       with:
-        image-ref: ujusophy/adservice:${{ github.sha }}
+        image-ref: ujusophy/checkoutservice:${{ github.sha }}
 
     - name: Push Docker Image
       run: |
