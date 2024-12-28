@@ -1,4 +1,4 @@
-name: CI for Adservice
+name: Adservice
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ujusophy/adservice:${{ github.sha }} ./adservice
+        docker build -t ujusophy/adservice:${{ github.sha }} ./src/adservice
 
     - name: Scan Docker Image for Vulnerabilities
       uses: aquasecurity/trivy-action@0.28.0
