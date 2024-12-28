@@ -34,4 +34,4 @@ jobs:
 
     - name: Push Docker Image
       run: |
-        docker push ujusophy/cartservice:${{ github.sha }}
+        docker push ujusophy/currencyservice:${{ github.sha }}
