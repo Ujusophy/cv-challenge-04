@@ -1,0 +1,37 @@
+name: Frontend
+
+on:
+  push:
+    paths:
+      - 'src/frontend/**' 
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker Image
+      run: |
+        docker build -t ujusophyfrontend:${{ github.sha }} ./src/frontend
+
+    - name: Scan Docker Image for Vulnerabilities
+      uses: aquasecurity/trivy-action@0.28.0
+      with:
+        image-ref: ujusophy/frontend:${{ github.sha }}
+
+    - name: Push Docker Image
+      run: |
+        docker push ujusophy/frontend:${{ github.sha }}
