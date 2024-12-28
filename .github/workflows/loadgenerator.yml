@@ -1,4 +1,4 @@
-name:Loadgenerator
+name: Loadgenerator
 
 on:
   push:
