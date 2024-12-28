@@ -25,7 +25,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ujusophyfrontend:${{ github.sha }} ./src/frontend
+        docker build -t ujusophy/frontend:${{ github.sha }} ./src/frontend
 
     - name: Scan Docker Image for Vulnerabilities
       uses: aquasecurity/trivy-action@0.28.0
