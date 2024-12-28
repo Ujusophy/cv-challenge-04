@@ -25,7 +25,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ujusophy/cartservice:${{ github.sha }} ./src/currencyservice
+        docker build -t ujusophy/currencyservice:${{ github.sha }} ./src/currencyservice
 
     - name: Scan Docker Image for Vulnerabilities
       uses: aquasecurity/trivy-action@0.28.0
