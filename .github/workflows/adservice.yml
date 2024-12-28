@@ -28,7 +28,7 @@ jobs:
         docker build -t ujusophy/adservice:${{ github.sha }} ./adservice
 
     - name: Scan Docker Image for Vulnerabilities
-      uses: aquasecurity/trivy-action@v0.29.0
+      uses: aquasecurity/trivy-action@0.28.0
       with:
         image-ref: ujusophy/adservice:${{ github.sha }}
 
